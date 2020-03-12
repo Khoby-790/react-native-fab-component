@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 
-const FAB = ({ style}) => {
+const FAB = ({ style }) => {
   const [animation] = useState(new Animated.Value(0));
   const [open, setOpen] = useState(false);
 
@@ -22,89 +22,87 @@ const FAB = ({ style}) => {
     setOpen(!open);
   };
 
-  render() {
-    const circle_1 = {
-      transform: [
-        { scale: animation },
-        {
-          translateY: animation.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0, -65]
-          })
-        }
-      ]
-    };
-    const circle_2 = {
-      transform: [
-        { scale: animation },
-        {
-          //   translateY: animation.interpolate({
-          //     inputRange: [0, 1],
-          //     outputRange: [0, 0]
-          //   }),
-          translateX: animation.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0, -75]
-          })
-        }
-      ]
-    };
-    const circle_3 = {
-      transform: [
-        { scale: animation },
-        {
-          //   translateY: animation.interpolate({
-          //     inputRange: [0, 1],
-          //     outputRange: [0, 0]
-          //   }),
-          translateX: animation.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0, 75]
-          })
-        }
-      ]
-    };
-    const rotation = {
-      transform: [
-        {
-          rotate: animation.interpolate({
-            inputRange: [0, 1],
-            outputRange: ["0deg", "45deg"]
-          })
-        }
-      ]
-    };
+  const circle_1 = {
+    transform: [
+      { scale: animation },
+      {
+        translateY: animation.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, -65]
+        })
+      }
+    ]
+  };
+  const circle_2 = {
+    transform: [
+      { scale: animation },
+      {
+        //   translateY: animation.interpolate({
+        //     inputRange: [0, 1],
+        //     outputRange: [0, 0]
+        //   }),
+        translateX: animation.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, -75]
+        })
+      }
+    ]
+  };
+  const circle_3 = {
+    transform: [
+      { scale: animation },
+      {
+        //   translateY: animation.interpolate({
+        //     inputRange: [0, 1],
+        //     outputRange: [0, 0]
+        //   }),
+        translateX: animation.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 75]
+        })
+      }
+    ]
+  };
+  const rotation = {
+    transform: [
+      {
+        rotate: animation.interpolate({
+          inputRange: [0, 1],
+          outputRange: ["0deg", "45deg"]
+        })
+      }
+    ]
+  };
 
-    return (
-      <View style={[styles.fab, style]}>
-        <TouchableOpacity activeOpacity={0.9}>
-          <Animated.View style={[styles.button, styles.secondary, circle_3]}>
-            <Entypo name="location-pin" size={25} color="#F02A4B" />
-          </Animated.View>
-        </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.9}>
-          <Animated.View style={[styles.button, styles.secondary, circle_2]}>
-            <Entypo name="thumbs-up" size={25} color="#F02A4B" />
-          </Animated.View>
-        </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.9}>
-          <Animated.View style={[styles.button, styles.secondary, circle_1]}>
-            <AntDesign name="hearto" size={25} color="#F02A4B" />
-          </Animated.View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.button, styles.menu]}
-          onPress={toggleAnimation}
-          activeOpacity={0.9}
-        >
-          <Animated.View style={[rotation]}>
-            <AntDesign name="plus" size={25} color="#fff" />
-          </Animated.View>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+  return (
+    <View style={[styles.fab, style]}>
+      <TouchableOpacity activeOpacity={0.9}>
+        <Animated.View style={[styles.button, styles.secondary, circle_3]}>
+          <Entypo name="location-pin" size={25} color="#F02A4B" />
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.9}>
+        <Animated.View style={[styles.button, styles.secondary, circle_2]}>
+          <Entypo name="thumbs-up" size={25} color="#F02A4B" />
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.9}>
+        <Animated.View style={[styles.button, styles.secondary, circle_1]}>
+          <AntDesign name="hearto" size={25} color="#F02A4B" />
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, styles.menu]}
+        onPress={toggleAnimation}
+        activeOpacity={0.9}
+      >
+        <Animated.View style={[rotation]}>
+          <AntDesign name="plus" size={25} color="#fff" />
+        </Animated.View>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 export default FAB;
 
